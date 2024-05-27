@@ -231,7 +231,7 @@ p{
 .container-slider-cards .card-slide h5{
     font-size: 1.5vw;
     line-height: 1.5vw;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 .container-slider-cards .card-slide a {
@@ -287,22 +287,151 @@ header.burger .logo, header.burger .logo-scroll{
     margin-top: 2vw;
 }
 header.burger.is-scrolled {
-    display: none;
+    background: #4343ff;
 
     .button-menu {
         padding: 15px 30px;
-
     }
 
     .logo-scroll {
-        width: 45px;
-        margin-top: 13px;
+        width: 190px;
+        margin-top: 20px;
     }
 
     .social {
         padding: 30px 30px 27px;
         margin-bottom: 0;
     }
+}
+
+
+.container-pushs-articles{
+    .container-pushs-article{
+        position: relative;
+
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background: #000;
+            opacity: .3;
+        }
+
+        .pushs-article-description{
+            position: absolute;
+            bottom: 4vw;
+            left: 2vw;
+            z-index: 3;
+            color: #FFF;
+        }
+
+        .fake-link{
+            position: absolute;
+            left: 2vw;
+            bottom: 2vw;
+            color: #FFF;
+            z-index: 3;
+            font-family: "mattoneblack";
+            text-decoration: none;
+        }
+    }
+}
+
+.pushs-article-description h1,
+.pushs-article-description h2,
+.pushs-article-description h3,
+.pushs-article-description h4,
+.pushs-article-description h5{
+    font-size: 1.8vw;
+    line-height: 1.8vw;
+}
+
+.pushs-article-description img{
+    height: 30px;
+    width: auto;
+}
+
+.container-pushs-article:hover .pushs-article-image{
+    transform: scale(1);
+}
+
+.menu-navigation .menu{
+    background: #4343ff;
+}
+
+.menu-navigation .menu li a{
+    font-family: "mattoneblack";
+}
+
+.strate.marge-small{
+    padding: 2vw 0;
+}
+
+
+
+footer li a{
+    color: #FFF;
+    font-size: 14px;
+}
+
+footer .copyright a{
+    text-decoration: underline;
+    font-size: 14px;
+    color: #FFF;
+}
+
+footer p {
+    color: #FFF;
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    padding: 40px 0;
+    background: #4343FF;
+
+
+
+
+    .copyright {
+        color: #FFF;
+        padding-top: 60px;
+        font-size: 12px;
+    }
+
+    .logo-footer {
+        width: 160px;
+    }
+
+    .menu li {
+        margin-bottom: 5px;
+    }
+
+    .social {
+        padding-top: 0;
+    }
+}
+
+footer p{
+    font-family: "mattoneblack";
+}
+footer .menu li a {
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+footer .menu li a:hover{
+    text-decoration: none;
+}
+
+footer .social svg path{
+    fill: #fff !important;
 }
 
 

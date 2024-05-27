@@ -64,76 +64,8 @@ endif;
 
 ?>
 
-<div class="container-form-landing">
-    <div class="container" id="form">
-        <div class="row">
-            <div class="col-sm-6 col-12">
-                <div class="container-text">
-                    <h2>Réservez votre appel de présentation </h2>
-                    <p>Un membre de l'équipe Crescendo vous contactera dans les jours à venir pour vous présenter notre manière de travailler ! </p>
-                </div>
-            </div>
-            <div class="col-sm-6 col-12">
 
-                <?php if(isset($returnMesage)): ?>
-                    <div class="return-message">
-                        <h3>Merci !</h3>
-                        <?= $returnMesage; ?>
-                    </div>
-                <?php else: ?>
-                    <form method="post" class="row contact-form" action="#form">
-                        <div class="col-sm-6">
-                            <label for="nom">Nom *</label>
-                            <input type="text" name="nom" required>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="prenom">Prénom *</label>
-                            <input type="text" name="prenom" required>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="email">Email *</label>
-                            <input type="email" name="email" required>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="telephone">Téléphone</label>
-                            <input type="tel" name="telephone">
-                        </div>
-
-                        <div class="col-sm-12">
-                            <label for="sujet">Sujet *</label>
-                            <textarea name="sujet" required></textarea>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <label for="consentement">
-                                <input type="checkbox" id="consentement" name="consentement" value="oui" required>
-                                J'accepte que mes données soient enregistrées
-                            </label>
-                        </div>
-                        <div style="display: none;">
-                            <label for="website">Laissez ce champ vide :</label>
-                            <input type="text" name="website" id="website">
-                        </div>
-
-                        <div class="col-sm-12 text-center">
-                            <input type="submit" class="button" value="Envoyer">
-                        </div>
-                    </form>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <?php get_footer(); ?>
 
-<script>
-    $('a[href^=\\#]').on('click', function(event){
-        event.preventDefault();
-        $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
-    });
-</script>
