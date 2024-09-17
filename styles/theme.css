@@ -161,6 +161,11 @@ p{
 
 .strate-hero .strate-hero_inner h1{
     text-transform: uppercase;
+    font-size: 8vw;
+    line-height: 8vw;
+}
+
+.home .strate-hero .strate-hero_inner h1{
     font-size: 4vw;
     line-height: 4vw;
 }
