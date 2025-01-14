@@ -5,6 +5,7 @@ Template Name: Page Contact
 get_header();
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérez les données du formulaire
     $nom = sanitize_text_field($_POST["nom"]);
