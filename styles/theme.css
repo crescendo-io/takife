@@ -78,6 +78,11 @@ p {
     color: #4343ff;
     position: relative;
 }
+
+.white .button::after {
+    background-image: url(../images/blue-arrow.svg);
+}
+
 .button:after {
     content: '';
     position: absolute;
