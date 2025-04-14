@@ -79,6 +79,12 @@ p {
     position: relative;
 }
 
+.white .button:hover{
+    background: #fff;
+    color: #4343ff;
+    position: relative;
+}
+
 .strate.container-image-on-text{
     padding: 200px 0;
 }
