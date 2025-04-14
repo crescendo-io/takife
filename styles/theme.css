@@ -79,6 +79,10 @@ p {
     position: relative;
 }
 
+.strate.container-image-on-text{
+    padding: 200px 0;
+}
+
 .white .button::after {
     background-image: url(../images/blue-arrow.svg);
 }
