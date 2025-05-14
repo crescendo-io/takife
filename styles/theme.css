@@ -79,6 +79,20 @@ p {
     position: relative;
 }
 
+.press-footer{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.press-footer strong{
+    font-family: "mattonebold";
+}
+
+.press-footer a{
+    color: #FFF;
+    text-decoration: underline;
+}
+
+
 .white .button:hover{
     background: #fff;
     color: #4343ff;
@@ -325,6 +339,10 @@ header.burger.is-scrolled .social {
 footer li a {
     color: #fff;
     font-size: 14px;
+}
+
+footer .social{
+    text-align: center!important;
 }
 footer .copyright a {
     text-decoration: underline;
