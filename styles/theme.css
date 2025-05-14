@@ -343,6 +343,7 @@ footer li a {
 
 footer .social{
     text-align: center!important;
+    margin-top: 30px;
 }
 footer .copyright a {
     text-decoration: underline;
