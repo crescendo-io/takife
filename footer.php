@@ -29,7 +29,7 @@
                     <div class="col-sm-3">
                         <p class="press-footer">
                             <strong>Contact presse</strong><br/>
-                            Sarah Gerlicher Communication / Smart PR<br/>
+                            Sarah Gerlicher Communications / Smart PR<br/>
                             <a href="mailto:sarahgerlicher@gmail.com">sarahgerlicher@gmail.com</a><br/>
                             06.78.29.26.25
                         </p>
