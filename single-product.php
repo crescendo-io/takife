@@ -3,12 +3,10 @@
 ?>
 
 <div class="strate-hero full " style="color: #ffffff; background: ">
-    <img src="https://harmony-builder.code/wp-content/uploads/2024/05/hero-2.png" class="strate-hero_image" alt="" width="1438" height="1002">
+    <img src="<?= get_site_url(); ?>/wp-content/uploads/2025/04/hero.jpg" class="strate-hero_image" alt="" width="1438" height="1002">
     <div class="strate-hero_inner">
-        <h1>L'event</h1>
-        <h2>🗓️ 19 décembre 2024<br/>
-            ⏰ 19h – 00h<br/>
-            L’Imprimerie Hôtel 15 Rue Victor Méric, 92110 Clichy<br/>
+        <h1>FESTIVAL DU KIFF</h1>
+        <h2>Journée Btob : 4 juillet 2025 de 10h30 à 19h + Soirée VIP<br/>
         </h2>
 
     </div>
@@ -28,31 +26,24 @@
                         // Obtenez l'objet produit
                         $product = wc_get_product($post->ID);
 
-                        // Vérifiez que c'est bien un produit variable
-                        if ($product && $product->is_type('variable')) {
-                            $variations = $product->get_available_variations();
+                        // Vérifiez que c'est un produit simple ou autre (non variable)
+                        if ($product && !$product->is_type('variable')) {
+                            $price = wc_price($product->get_price());
+                            $product_id = $product->get_id();
+                            $product_name = $product->get_name();
 
-                            foreach ($variations as $variation) {
-                                $variation_id = $variation['variation_id'];
-                                $attributes = $variation['attributes']; // Attributs des variations
-                                $formatted_attributes = implode(', ', array_map(function($key, $value) {
-                                    return wc_attribute_label(str_replace('attribute_', '', $key)) . ': ' . $value;
-                                }, array_keys($attributes), $attributes));
-                                $price = wc_price($variation['display_price']);
-
-                                echo '<tr>';
-                                echo '<td>' . esc_html($formatted_attributes) . '</td>';
-                                echo '<td>' . $price . '</td>';
-                                echo '<td style="text-align: right">';
-                                echo '<form method="post" action="' . esc_url('?add-to-cart=' . $variation_id) . '">';
-                                echo '<input type="number" name="quantity" class="select-quant" value="1" min="1" style="width: 50px;">';
-                                echo '<button type="submit" class="button primary">Ajouter au panier</button>';
-                                echo '</form>';
-                                echo '</td>';
-                                echo '</tr>';
-                            }
+                            echo '<tr>';
+                            echo '<td>' . esc_html($product_name) . '</td>';
+                            echo '<td>' . $price . '</td>';
+                            echo '<td style="text-align: right">';
+                            echo '<form method="post" action="' . esc_url('?add-to-cart=' . $product_id) . '">';
+                            echo '<input type="number" name="quantity" class="select-quant" value="1" min="1" style="width: 50px; display: none">';
+                            echo '<button type="submit" class="button primary">Ajouter au panier</button>';
+                            echo '</form>';
+                            echo '</td>';
+                            echo '</tr>';
                         } else {
-                            echo '<tr><td colspan="3">Ce produit n\'a pas de variations disponibles.</td></tr>';
+                            echo '<tr><td colspan="3">Ce produit n\'est pas un produit simple.</td></tr>';
                         }
                     } else {
                         echo '<tr><td colspan="3">WooCommerce n\'est pas installé ou activé.</td></tr>';
