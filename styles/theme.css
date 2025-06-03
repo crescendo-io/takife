@@ -602,3 +602,20 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
     opacity: 1;
     transform: translateY(0);
 }
+
+.container-image-text h1,
+.container-image-text h2,
+.container-image-text h3,
+.container-image-text h4,
+.container-image-text h5,
+.container-image-text p,
+.container-image-text pre {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(.77,0,.18,1), transform 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+.container-image-text .text-appear {
+    opacity: 1;
+    transform: translateY(0);
+}
