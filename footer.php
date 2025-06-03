@@ -133,18 +133,10 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log('Transition active !');
     }
   }
-  function hideTransition() {
-    const transition = document.getElementById('page-transition');
-    if (transition) {
-      transition.classList.remove('active');
-      setTimeout(() => {
-        transition.classList.add('hide');
-      }, 700);
-    }
-  }
+
 
   document.addEventListener('DOMContentLoaded', function() {
-    hideTransition();
+
 
     // Utilise event delegation pour TOUS les clics sur <a>
     document.body.addEventListener('click', function(e) {
@@ -173,5 +165,3 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <div id="page-transition"></div>
-
-<div class="page-loader"></div>
