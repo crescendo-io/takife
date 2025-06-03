@@ -151,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function() {
       if (
         href &&
         !href.startsWith('#') &&
-        !link.getAttribute('target') === 'true') &&
         !link.hasAttribute('download') &&
         !link.classList.contains('no-transition')
       ) {
