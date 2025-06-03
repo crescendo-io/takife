@@ -119,3 +119,55 @@ document.addEventListener("DOMContentLoaded", function() {
   elements.forEach(el => observer.observe(el));
 });
 </script>
+
+<script>
+(function() {
+  function showTransition() {
+    const transition = document.getElementById('page-transition');
+    if (transition) {
+      transition.classList.add('active');
+      transition.classList.remove('hide');
+      console.log('Transition active !');
+    }
+  }
+  function hideTransition() {
+    const transition = document.getElementById('page-transition');
+    if (transition) {
+      transition.classList.remove('active');
+      setTimeout(() => {
+        transition.classList.add('hide');
+      }, 700);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    hideTransition();
+
+    // Utilise event delegation pour TOUS les clics sur <a>
+    document.body.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (
+        href &&
+        !href.startsWith('#') &&
+        !link.hasAttribute('target') &&
+        !link.hasAttribute('download') &&
+        !link.classList.contains('no-transition')
+      ) {
+        e.preventDefault();
+
+
+        showTransition();
+        setTimeout(() => {
+          window.location = href;
+        }, 700);
+      }
+    });
+  });
+
+  window.addEventListener('pageshow', hideTransition);
+})();
+</script>
+
+<div id="page-transition"></div>

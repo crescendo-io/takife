@@ -619,3 +619,28 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
     opacity: 1;
     transform: translateY(0);
 }
+
+#page-transition {
+  position: fixed;
+  left: 0;
+  bottom: -100vh;
+  width: 100vw;
+  height: 100vh;
+  background: #4343ff;
+  z-index: 999999;
+  pointer-events: none;
+  transition: bottom 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+#page-transition.active {
+  bottom: 0;
+  pointer-events: all;
+  z-index: 999999;
+  transition: bottom 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+#page-transition.hide {
+  transition: none;
+  bottom: -100vh;
+  z-index: 999999;
+}
