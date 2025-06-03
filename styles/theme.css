@@ -644,3 +644,16 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
   bottom: -100vh;
   z-index: 999999;
 }
+
+.page-loader{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #4343ff;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

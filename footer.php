@@ -73,6 +73,9 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+
+    $('.page-loader').fadeOut();
+
   const selectors = ".strate-hero h1, .strate-hero h2, .strate-hero p";
   document.querySelectorAll(selectors).forEach(element => {
     const text = element.textContent;
@@ -170,3 +173,5 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <div id="page-transition"></div>
+
+<div class="page-loader"></div>
