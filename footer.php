@@ -94,15 +94,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Sélectionne tous les textes à animer dans .container-text-only
-  const elements = document.querySelectorAll('.container-text-only h1, .container-text-only pre, .container-text-only h2, .container-text-only h3, .container-text-only h4, .container-text-only h5, .container-text-only p');
+  // Sélectionne tous les textes à animer dans .container-text-only et .container-image-text
+  const elements = document.querySelectorAll('.container-text-only h1, .container-text-only pre, .container-text-only h2, .container-text-only h3, .container-text-only h4, .container-text-only h5, .container-text-only p, .container-image-text h1, .container-image-text pre, .container-image-text h2, .container-image-text h3, .container-image-text h4, .container-image-text h5, .container-image-text p');
 
   // Crée l'observer
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         // On récupère tous les éléments frères à animer dans la même section
-        const parent = entry.target.closest('.container-text-only');
+        const parent = entry.target.closest('.container-text-only, .container-image-text');
         const siblings = parent.querySelectorAll('h1, h2, h3, h4, h5, p, pre');
         siblings.forEach((el, i) => {
           setTimeout(() => {
