@@ -70,3 +70,52 @@
         <?php wp_footer(); ?>
     </body>
 </html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const selectors = ".strate-hero h1, .strate-hero h2, .strate-hero p";
+  document.querySelectorAll(selectors).forEach(element => {
+    const text = element.textContent;
+    element.textContent = "";
+    // On découpe en mots, en gardant les espaces
+    const words = text.split(/(\s+)/);
+    words.forEach((word, i) => {
+      const span = document.createElement("span");
+      span.textContent = word;
+      span.classList.add("word");
+      element.appendChild(span);
+      setTimeout(() => {
+        span.classList.add("visible");
+      }, 50 * i); // 100ms par mot
+    });
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Sélectionne tous les textes à animer dans .container-text-only
+  const elements = document.querySelectorAll('.container-text-only h1, .container-text-only pre, .container-text-only h2, .container-text-only h3, .container-text-only h4, .container-text-only h5, .container-text-only p');
+
+  // Crée l'observer
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // On récupère tous les éléments frères à animer dans la même section
+        const parent = entry.target.closest('.container-text-only');
+        const siblings = parent.querySelectorAll('h1, h2, h3, h4, h5, p, pre');
+        siblings.forEach((el, i) => {
+          setTimeout(() => {
+            el.classList.add('text-appear');
+          }, 100 * i);
+        });
+        // On arrête d'observer cette section
+        siblings.forEach(el => obs.unobserve(el));
+      }
+    });
+  }, { threshold: 0.2 }); // 0.2 = 20% visible
+
+  // Observe chaque élément
+  elements.forEach(el => observer.observe(el));
+});
+</script>

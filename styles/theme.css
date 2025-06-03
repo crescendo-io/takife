@@ -545,3 +545,60 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
     margin-left: 15px !important;
     display: inline-block;
 }
+.strate-hero .letter {
+    opacity: 0;
+    display: inline;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.strate-hero .letter.visible {
+    opacity: 1;
+    transform: translateY(0);
+    display: inline-block;
+}
+
+.strate-hero .letter.space {
+    width: 0.5em;
+    display: inline-block;
+}
+
+.strate-hero h1,
+.strate-hero h2,
+.strate-hero p {
+  white-space: normal;
+}
+
+.strate-hero .letter {
+  word-break: keep-all;
+}
+
+.strate-hero .word {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s;
+    white-space: pre; /* pour garder les espaces */
+}
+
+.strate-hero .word.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container-text-only h1,
+.container-text-only h2,
+.container-text-only h3,
+.container-text-only h4,
+.container-text-only h5,
+.container-text-only p,
+.container-text-only pre {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(.77,0,.18,1), transform 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+.container-text-only .text-appear {
+    opacity: 1;
+    transform: translateY(0);
+}
