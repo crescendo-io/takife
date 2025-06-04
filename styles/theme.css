@@ -758,7 +758,7 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
         padding: 30px;
         max-width: 100%;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-45%);
     }
     .strate-hero .strate-hero_inner h2{
         font-size: 20px;
