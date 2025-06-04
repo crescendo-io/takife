@@ -711,6 +711,17 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
     }
 
     .strate-hero.full{
+        height: 400px;
+    }
+
+    .strate-hero .strate-hero_inner{
+        bottom: auto;
+    }
+    .strate-hero .strate-hero_inner h1{
+        font-size: 40px;
+        line-height: 45px;
+    }
+    .home .strate-hero.full{
         height: 600px;
     }
 
@@ -721,6 +732,10 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
 
     footer{
         text-align: center;
+    }
+
+    .menu-navigation ul li a{
+        font-size: 18px;
     }
 
     footer .logo-footer{
