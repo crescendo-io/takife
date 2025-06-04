@@ -657,3 +657,84 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
     justify-content: center;
     align-items: center;
 }
+
+
+@media (max-width: 768px) {
+    header.burger .logo, header.burger .logo-scroll{
+        width: 150px;
+        margin-top: 30px;
+    }
+
+    .strate{
+        padding: 50px 0;
+    }
+    .container{
+        padding: 0 20px;
+    }
+
+    .strate li:before{
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+    }
+
+    header.burger.is-scrolled .logo-scroll{
+        width: 110px;
+        margin-top: 9px;
+    }
+
+    header.burger.is-scrolled .button-menu{
+        padding: 15px 10px;
+    }
+
+    header.burger.is-scrolled.is-visible{
+        padding-bottom: 7px;
+    }
+
+
+    h2{
+       font-size: 30px;
+        line-height: 35px;
+    }
+
+    h3{
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    .strate-hero img{
+        max-width: 100%;
+    }
+
+    .strate-hero.full{
+        height: 600px;
+    }
+
+    .button{
+        padding: 15px;
+    }
+
+    .button:after{
+        display: none;
+    }
+
+    .home .strate-hero .strate-hero_inner h1{
+        font-size: 50px;
+        line-height: 55px;
+    }
+
+    .strate-hero .strate-hero_inner{
+        text-align: center;
+        width: 100%;
+        left: 0;
+        padding: 30px;
+        max-width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .strate-hero .strate-hero_inner h2{
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+}
