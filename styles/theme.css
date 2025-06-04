@@ -691,6 +691,10 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
         padding-bottom: 7px;
     }
 
+    .strate.marge-small{
+        padding: 15px 0;
+    }
+
 
     h2{
        font-size: 30px;
@@ -712,6 +716,15 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
 
     .button{
         padding: 15px;
+        margin-bottom: 0;
+    }
+
+    footer{
+        text-align: center;
+    }
+
+    footer .logo-footer{
+        margin-bottom: 30px;
     }
 
     .button:after{
