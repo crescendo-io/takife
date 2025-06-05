@@ -350,10 +350,14 @@ header.burger.is-scrolled .social {
 }
 .menu-navigation .menu {
     background: #4343ff;
+    z-index: 8;
 }
+
 .menu-navigation .menu li a {
     font-family: "mattoneblack";
 }
+
+
 .strate.marge-small {
     padding: 2vw 0;
 }
