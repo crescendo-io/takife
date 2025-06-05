@@ -357,6 +357,14 @@ header.burger.is-scrolled .social {
     font-family: "mattoneblack";
 }
 
+.xoo-wsc-markup{
+    display: none;
+}
+
+.single-product .xoo-wsc-markup{
+    display: block;
+}
+
 
 .strate.marge-small {
     padding: 2vw 0;
