@@ -164,3 +164,52 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <div id="page-transition"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const sections = document.querySelectorAll('.container-image-full');
+
+  sections.forEach(section => {
+    const image = section.querySelector('.image-strate');
+    if (!image) return;
+
+    // Fonction pour calculer et appliquer le zoom
+    function updateZoom() {
+      const sectionRect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Calcule la position de la section dans le viewport (0 quand le haut arrive, 1 quand le bas quitte)
+      // On ajuste pour que le zoom se fasse quand la section est visible
+      const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - sectionRect.top) / (viewportHeight + sectionRect.height)));
+
+      // Calcule l'échelle de zoom (par exemple, de 1.1 à 1.5)
+      const initialScale = 1.1;
+      const maxScale = 1.3; // Zoom maximum (ajuste si besoin)
+      const scale = initialScale + (maxScale - initialScale) * scrollProgress;
+
+      image.style.transform = `scale(${scale})`;
+    }
+
+    // Met à jour le zoom initialement
+    updateZoom();
+
+    // Ajoute l'écouteur d'événement scroll pour mettre à jour le zoom
+    window.addEventListener('scroll', updateZoom);
+
+    // Optionnel: Retire l'écouteur quand la section n'est plus dans le viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          // Si la section quitte le viewport (haut ou bas), on pourrait retirer l'écouteur
+          // window.removeEventListener('scroll', updateZoom); // <-- Activer si tu veux optimiser
+        } else {
+          // Si la section entre (ou reste), assure-toi que l'écouteur est là
+          // window.addEventListener('scroll', updateZoom); // <-- Activer si tu veux optimiser
+          updateZoom(); // Met à jour la position au cas où
+        }
+      });
+    }, { threshold: [0, 1] }); // Observer l'entrée et la sortie complète
+    observer.observe(section);
+  });
+});
+</script>

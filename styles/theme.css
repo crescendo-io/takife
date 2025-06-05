@@ -187,6 +187,19 @@ p {
     position: absolute;
     width: 100%;
 }
+
+.container-image-full {
+    overflow: hidden;
+    position: relative;
+}
+.container-image-full .image-strate {
+    width: 100%;
+    display: block;
+    transform: scale(1.1);
+    transform-origin: center center;
+    transition: none;
+}
+
 .container-image-full img {
     position: relative;
     z-index: 3;
