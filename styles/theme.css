@@ -60,6 +60,8 @@ p {
 }
 .strate-hero {
     background: #4343ff;
+    overflow: hidden;
+    position: relative;
 }
 .button {
     background: #4343ff;
@@ -151,6 +153,11 @@ p {
     border-radius: 2.5vw 0 0;
     margin-left: auto;
     display: block;
+    position: relative;
+    z-index: 1;
+    transform: translateY(0px);
+    transition: none !important;
+    will-change: transform;
 }
 .strate-hero .strate-hero_inner {
     bottom: 4vw;
@@ -159,6 +166,7 @@ p {
     top: auto;
     text-align: left;
     max-width: 80%;
+    z-index: 5;
 }
 .strate-hero .strate-hero_inner .button {
     background: #fff;

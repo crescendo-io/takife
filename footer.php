@@ -213,3 +213,55 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const parallaxSection = document.querySelector('.strate-hero');
+  const parallaxImage = parallaxSection ? parallaxSection.querySelector('img') : null;
+
+  if (!parallaxSection || !parallaxImage) {
+    console.log("Section .strate-hero ou image non trouvée pour le parallax.");
+    return; // Arrête le script si la section ou l'image n'existe pas
+  }
+
+  // Facteur de parallax (ajuste cette valeur : plus elle est élevée, plus l'image bouge)
+  const parallaxFactor = 0.4;
+
+  function updateParallax() {
+    const sectionRect = parallaxSection.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // Calcule la position du centre de la section par rapport au centre du viewport
+    // Quand le centre de la section est au milieu du viewport, value = 0
+    // Quand la section est au-dessus, value est négatif
+    // Quand la section est en dessous, value est positif
+    const sectionCenterRelativeToViewport = sectionRect.top + sectionRect.height / 2 - viewportHeight / 2;
+
+    // Calcule le décalage vertical pour l'image
+    const translateY = sectionCenterRelativeToViewport * -parallaxFactor;
+
+    // Applique le décalage à l'image
+    parallaxImage.style.transform = `translateY(${translateY}px)`;
+  }
+
+  // Met à jour le parallax au chargement et au scroll
+  updateParallax();
+  window.addEventListener('scroll', updateParallax);
+
+  // Optionnel : Utilise IntersectionObserver pour n'appliquer le parallax que quand la section est visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Commence à écouter le scroll quand la section entre dans le viewport
+        window.addEventListener('scroll', updateParallax);
+        updateParallax(); // Assure la bonne position au moment de l'entrée
+      } else {
+        // Arrête d'écouter le scroll quand la section quitte le viewport
+        window.removeEventListener('scroll', updateParallax);
+      }
+    });
+  }, { threshold: 0 }); // Déclenche quand 0% de la section est visible
+  observer.observe(parallaxSection);
+
+});
+</script>
