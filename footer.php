@@ -216,52 +216,84 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const parallaxSection = document.querySelector('.strate-hero');
-  const parallaxImage = parallaxSection ? parallaxSection.querySelector('img') : null;
+  // Définit la largeur maximale pour considérer comme mobile
+  const mobileMaxWidth = 768; // Correspond à ta media query CSS
 
-  if (!parallaxSection || !parallaxImage) {
-    console.log("Section .strate-hero ou image non trouvée pour le parallax.");
-    return; // Arrête le script si la section ou l'image n'existe pas
-  }
+  // Vérifie si on n'est PAS en mobile
+  if (window.innerWidth > mobileMaxWidth) {
 
-  // Facteur de parallax (ajuste cette valeur : plus elle est élevée, plus l'image bouge)
-  const parallaxFactor = 0.4;
+    const parallaxSection = document.querySelector('.strate-hero');
+    const parallaxImage = parallaxSection ? parallaxSection.querySelector('img') : null;
 
-  function updateParallax() {
-    const sectionRect = parallaxSection.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+    if (!parallaxSection || !parallaxImage) {
+      console.log("Section .strate-hero ou image non trouvée pour le parallax.");
+      return; // Arrête le script si la section ou l'image n'existe pas
+    }
 
-    // Calcule la position du centre de la section par rapport au centre du viewport
-    // Quand le centre de la section est au milieu du viewport, value = 0
-    // Quand la section est au-dessus, value est négatif
-    // Quand la section est en dessous, value est positif
-    const sectionCenterRelativeToViewport = sectionRect.top + sectionRect.height / 2 - viewportHeight / 2;
+    // Facteur de parallax (ajuste cette valeur : plus elle est élevée, plus l'image bouge)
+    const parallaxFactor = 0.4;
 
-    // Calcule le décalage vertical pour l'image
-    const translateY = sectionCenterRelativeToViewport * -parallaxFactor;
+    function updateParallax() {
+      const sectionRect = parallaxSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
 
-    // Applique le décalage à l'image
-    parallaxImage.style.transform = `translateY(${translateY}px)`;
-  }
+      // Calcule la position du centre de la section par rapport au centre du viewport
+      const sectionCenterRelativeToViewport = sectionRect.top + sectionRect.height / 2 - viewportHeight / 2;
 
-  // Met à jour le parallax au chargement et au scroll
-  updateParallax();
-  window.addEventListener('scroll', updateParallax);
+      // Calcule le décalage vertical pour l'image
+      const translateY = sectionCenterRelativeToViewport * -parallaxFactor;
 
-  // Optionnel : Utilise IntersectionObserver pour n'appliquer le parallax que quand la section est visible
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Commence à écouter le scroll quand la section entre dans le viewport
-        window.addEventListener('scroll', updateParallax);
-        updateParallax(); // Assure la bonne position au moment de l'entrée
-      } else {
-        // Arrête d'écouter le scroll quand la section quitte le viewport
-        window.removeEventListener('scroll', updateParallax);
-      }
+      // Applique le décalage à l'image
+      parallaxImage.style.transform = `translateY(${translateY}px)`;
+    }
+
+    // Met à jour le parallax initialement
+    updateParallax();
+
+    // Ajoute l'écouteur d'événement scroll pour mettre à jour le parallax
+    // Cet écouteur sera ajouté et retiré par l'IntersectionObserver pour optimisation
+    // window.addEventListener('scroll', updateParallax); // Cette ligne n'est plus nécessaire ici grâce à l'observer
+
+    // Utilise IntersectionObserver pour n'appliquer le parallax que quand la section est visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Commence à écouter le scroll quand la section entre dans le viewport
+          window.addEventListener('scroll', updateParallax);
+          updateParallax(); // Assure la bonne position au moment de l'entrée
+        } else {
+          // Arrête d'écouter le scroll quand la section quitte le viewport
+          window.removeEventListener('scroll', updateParallax);
+        }
+      });
+    }, { threshold: 0 }); // Déclenche quand 0% de la section est visible
+    observer.observe(parallaxSection);
+
+    // Optionnel: Gérer le redimensionnement de la fenêtre
+    window.addEventListener('resize', () => {
+        // Recharge la page si on passe de mobile à desktop ou vice-versa pour appliquer/désactiver le parallax
+        // window.location.reload(); // Pas toujours souhaitable, mais simple. Une meilleure approche serait de nettoyer/initialiser les listeners ici.
+         if (window.innerWidth <= mobileMaxWidth) {
+             // Si on est repassé en mobile, on s'assure de nettoyer les listeners
+             window.removeEventListener('scroll', updateParallax);
+             observer.disconnect(); // Arrête l'observation
+             // Optionnel: Remettre l'image à sa position par défaut si nécessaire
+             if(parallaxImage) parallaxImage.style.transform = 'translateY(0px)';
+         } else {
+             // Si on est repassé en desktop, ré-initialiser l'observateur et l'écouteur scroll
+             // Une simple réinitialisation comme le code ci-dessus est complexe. Le plus simple est souvent de recharger ou de faire un setup/teardown plus sophistiqué.
+             // Pour l'instant, on se contente de désactiver en mobile.
+         }
     });
-  }, { threshold: 0 }); // Déclenche quand 0% de la section est visible
-  observer.observe(parallaxSection);
+
+
+  } else {
+      // Si on est en mobile, on s'assure que l'image est à sa position par défaut
+      const parallaxSection = document.querySelector('.strate-hero');
+      const parallaxImage = parallaxSection ? parallaxSection.querySelector('img') : null;
+       if(parallaxImage) parallaxImage.style.transform = 'translateY(0px)';
+      console.log("Parallax désactivé en mobile.");
+  }
 
 });
 </script>
