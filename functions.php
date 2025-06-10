@@ -41,3 +41,24 @@ function wpm_custom_post_type() {
 }
 
 add_action( 'init', 'wpm_custom_post_type', 0 );
+
+
+add_filter( 'gettext', 'custom_translate_checkout_fields', 20, 3 );
+function custom_translate_checkout_fields( $translated_text, $text, $domain ) {
+    $translations = array(
+        'First name' => 'Prénom',
+        'Last name' => 'Nom',
+        'Street address' => 'Adresse',
+        'Add apartment, suite, unit, etc.' => 'Complément d’adresse',
+        'Town / City' => 'Ville',
+        'State / County' => 'Région / Département',
+        'Postcode / ZIP' => 'Code postal',
+        'Country / Region' => 'Pays',
+    );
+
+    if ( isset( $translations[ $text ] ) ) {
+        $translated_text = $translations[ $text ];
+    }
+
+    return $translated_text;
+}
