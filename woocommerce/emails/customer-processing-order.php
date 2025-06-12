@@ -29,7 +29,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <?php /* translators: %s: Order number */ ?>
 <p>Ta commande a bien été reçue et nous sommes ravis de savoir que nous allons kiffer et networker ensemble le 4 juillet prochain 🤩</p>
 <p>
-    Nous t'envoyons très prochainement :
+    Nous t'envoyons très prochainement : <br/>
     - Ton invitation officielle
     - Le programme de la journée
 
