@@ -30,10 +30,10 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <p>Ta commande a bien été reçue et nous sommes ravis de savoir que nous allons kiffer et networker ensemble le 4 juillet prochain 🤩</p>
 <p>
     Nous t'envoyons très prochainement : <br/>
-    - Ton invitation officielle
-    - Le programme de la journée
+    - Ton invitation officielle<br/>
+    - Le programme de la journée<br/><br/>
 
-    À très vite !
+    À très vite !<br/><br/>
 
     Léa
 </p>
