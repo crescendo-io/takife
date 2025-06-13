@@ -798,4 +798,8 @@ body .wc-block-components-sidebar-layout.wc-block-cart {
         line-height: 26px;
     }
 
+    .product-variations td, .product-variations th{
+        display: block;
+    }
+
 }
